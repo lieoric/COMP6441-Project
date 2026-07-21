@@ -1,0 +1,63 @@
+{% set page_id = 'challenge2' %}
+{% extends "base.html" %}
+{% block title %}Stage 2 - SQL Injection Lab{% endblock %}
+{% block content %}
+<div class="challenge-shell">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="{{ url_for('ctf.index') }}">Dashboard</a><span aria-hidden="true">/</span><span>Stage 2</span></nav>
+    <section class="page-heading challenge-heading">
+        <div>
+            <span class="eyebrow">Stage 02 - Exploitation</span>
+            <h1>Bypass authentication</h1>
+            <p>Reach the administrator profile without knowing the administrator password.</p>
+        </div>
+        <span class="mode-chip {% if mode|default('vulnerable', true) == 'secure' %}secure{% else %}vulnerable{% endif %}">
+            {% if mode|default('vulnerable', true) == 'secure' %}Secure query{% else %}Unsafe query{% endif %}
+        </span>
+    </section>
+
+    <div class="challenge-grid">
+        <section class="work-panel" aria-labelledby="login-title">
+            <div class="panel-heading">
+                <span class="step-label">Authentication</span>
+                <h2 id="login-title">Account login</h2>
+            </div>
+            <form class="challenge-form" method="post" action="{{ url_for('ctf.challenge_two') }}">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" value="{{ request.form.get('username', '') if request is defined else '' }}" autocomplete="username" required autofocus>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required>
+                <button class="button button-primary button-submit" type="submit">Authenticate<span aria-hidden="true">-&gt;</span></button>
+            </form>
+        </section>
+
+        <aside class="result-panel" aria-live="polite">
+            <div class="panel-heading">
+                <span class="step-label">Session</span>
+                <h2>Access result</h2>
+            </div>
+            {% if error|default(false) %}
+                <div class="alert alert-error"><strong>Access denied</strong><span>{{ error }}</span></div>
+            {% elif success|default(false) %}
+                <div class="alert alert-success">
+                    <strong>{% if user|default(false) and user.role|default('') == 'admin' %}Administrator access granted{% else %}Valid user login{% endif %}</strong>
+                    <span>{{ result|default('The protected profile is now available.', true) }}</span>
+                </div>
+            {% else %}
+                <div class="empty-result">
+                    <span class="empty-icon" aria-hidden="true">...</span>
+                    <p>Waiting for credentials</p>
+                    <small>Authentication status will appear here.</small>
+                </div>
+            {% endif %}
+            {% if flag|default(false) %}
+                <div class="flag-box"><span>Stage flag</span><code>{{ flag }}</code></div>
+            {% endif %}
+        </aside>
+    </div>
+
+    <div class="stage-actions">
+        <a class="button button-secondary" href="{{ url_for('ctf.challenge_one') }}">&lt;- Stage 1</a>
+        <a class="button button-primary" href="{{ url_for('ctf.challenge_three') }}">Stage 3 <span aria-hidden="true">-&gt;</span></a>
+    </div>
+</div>
+{% endblock %}
