@@ -55,6 +55,30 @@
         </aside>
     </div>
 
+    <section class="hint-panel" aria-labelledby="stage-two-hints">
+        <div class="hint-heading">
+            <div>
+                <span class="step-label">Optional support</span>
+                <h2 id="stage-two-hints">Progressive hints</h2>
+            </div>
+            <span class="hint-count">3 levels</span>
+        </div>
+        <div class="hint-list">
+            <details>
+                <summary><span>Hint 1</span>Target the administrator row</summary>
+                <p>The objective is to make the username condition select admin while preventing the password condition from being evaluated.</p>
+            </details>
+            <details>
+                <summary><span>Hint 2</span>Terminate the value, then the query</summary>
+                <p>Close the username string and use the SQLite line-comment token to discard the remaining password comparison.</p>
+            </details>
+            <details>
+                <summary><span>Hint 3</span>Use the intended training payload</summary>
+                <p>Enter <code>admin' --</code> as the username and any non-empty value as the password.</p>
+            </details>
+        </div>
+    </section>
+
     <div class="stage-actions">
         <a class="button button-secondary" href="{{ url_for('ctf.challenge_one') }}">&lt;- Stage 1</a>
         <a class="button button-primary" href="{{ url_for('ctf.challenge_three') }}">Stage 3 <span aria-hidden="true">-&gt;</span></a>

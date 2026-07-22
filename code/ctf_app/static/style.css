@@ -765,6 +765,90 @@ textarea:focus {
     margin-top: 20px;
 }
 
+.hint-panel {
+    margin-top: 24px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+.hint-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface-soft);
+}
+
+.hint-heading h2 {
+    margin: 3px 0 0;
+    font-size: 17px;
+}
+
+.hint-count {
+    flex: 0 0 auto;
+    padding: 3px 7px;
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    color: var(--muted);
+    background: var(--surface);
+    font-size: 10px;
+    font-weight: 750;
+    text-transform: uppercase;
+}
+
+.hint-list details + details {
+    border-top: 1px solid var(--line);
+}
+
+.hint-list summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    list-style-position: inside;
+}
+
+.hint-list summary:hover {
+    background: var(--blue-soft);
+}
+
+.hint-list summary span {
+    flex: 0 0 auto;
+    padding: 3px 6px;
+    border-radius: 4px;
+    color: var(--blue-dark);
+    background: var(--blue-soft);
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.hint-list details[open] summary {
+    border-bottom: 1px solid var(--line);
+    background: var(--blue-soft);
+}
+
+.hint-list p {
+    margin: 0;
+    padding: 15px 20px 18px 52px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hint-list code {
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: var(--red-dark);
+    background: var(--red-soft);
+}
+
 .profile-heading {
     align-items: center;
     padding-bottom: 26px;
@@ -1060,6 +1144,16 @@ textarea:focus {
 
     .footer-inner {
         min-height: 72px;
+    }
+
+    .hint-list summary {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .hint-list p {
+        padding-left: 20px;
     }
 }
 

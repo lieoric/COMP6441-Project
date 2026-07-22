@@ -60,6 +60,30 @@
     {% if success|default(false) %}<div class="alert alert-success wide-alert"><strong>Defense verified</strong><span>The payload changes the unsafe query but remains data in the parameterized query.</span></div>{% endif %}
     {% if flag|default(false) %}<div class="flag-box final-flag"><span>Final flag</span><code>{{ flag }}</code></div>{% endif %}
 
+    <section class="hint-panel" aria-labelledby="stage-three-hints">
+        <div class="hint-heading">
+            <div>
+                <span class="step-label">Optional support</span>
+                <h2 id="stage-three-hints">Progressive hints</h2>
+            </div>
+            <span class="hint-count">3 levels</span>
+        </div>
+        <div class="hint-list">
+            <details>
+                <summary><span>Hint 1</span>Keep the experiment controlled</summary>
+                <p>Reuse the exact payload that completed Stage 2 so the query implementation is the only changed variable.</p>
+            </details>
+            <details>
+                <summary><span>Hint 2</span>Separate the primary fix from supporting controls</summary>
+                <p>Password hashing and generic errors reduce other risks, but they do not stop user input from becoming SQL syntax.</p>
+            </details>
+            <details>
+                <summary><span>Hint 3</span>Identify cause and control</summary>
+                <p>Select user input concatenated into SQL as the root cause and parameterized queries as the primary defense.</p>
+            </details>
+        </div>
+    </section>
+
     <div class="stage-actions">
         <a class="button button-secondary" href="{{ url_for('ctf.challenge_two') }}">&lt;- Stage 2</a>
         <a class="button button-primary" href="{{ url_for('ctf.profile') }}">View profile <span aria-hidden="true">-&gt;</span></a>

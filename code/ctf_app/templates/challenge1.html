@@ -55,6 +55,30 @@
         </aside>
     </div>
 
+    <section class="hint-panel" aria-labelledby="stage-one-hints">
+        <div class="hint-heading">
+            <div>
+                <span class="step-label">Optional support</span>
+                <h2 id="stage-one-hints">Progressive hints</h2>
+            </div>
+            <span class="hint-count">3 levels</span>
+        </div>
+        <div class="hint-list">
+            <details>
+                <summary><span>Hint 1</span>Change one property of a normal username</summary>
+                <p>Try punctuation that has meaning inside a database string rather than entering another account name.</p>
+            </details>
+            <details>
+                <summary><span>Hint 2</span>Look for the string boundary</summary>
+                <p>SQL commonly surrounds text values with single quotes. An unmatched delimiter changes how the query is parsed.</p>
+            </details>
+            <details>
+                <summary><span>Hint 3</span>Use the smallest possible probe</summary>
+                <p>Submit one single quote and inspect whether the application exposes a database syntax error.</p>
+            </details>
+        </div>
+    </section>
+
     <div class="stage-actions">
         <a class="button button-secondary" href="{{ url_for('ctf.index') }}">&lt;- Dashboard</a>
         <a class="button button-primary" href="{{ url_for('ctf.challenge_two') }}">Stage 2 <span aria-hidden="true">-&gt;</span></a>
